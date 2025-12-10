@@ -1,0 +1,118 @@
+---
+title: Welcome to Hai Tran Documentation
+description: An overview of the Hai Tran Documentation platform, designed as your default space to organize and manage project documentation efficiently.
+---
+
+## Platform Overview
+
+Hai Tran Documentation serves as your central hub for organizing project docs. You create structured spaces, collaborate with teams, and maintain up-to-date guides. Use it to document APIs, user flows, deployment processes, and more. The platform supports MDX for rich, interactive content with components like cards, steps, and tabs.
+
+<Columns cols={3}>
+  <Card title="Organized Spaces" icon="folder" href="/docs/spaces">
+    Group docs by project or team for easy navigation.
+  </Card>
+  <Card title="Rich Components" icon="components" href="/docs/components">
+    Embed interactive elements directly in your pages.
+  </Card>
+  <Card title="Version Control" icon="git-branch" href="/docs/versions">
+    Track changes and maintain history effortlessly.
+  </Card>
+</Columns>
+
+## Key Benefits
+
+You gain speed and clarity with these features:
+
+| Feature | Benefit |
+|---------|---------|
+| MDX Support | Write interactive docs with JSX components |
+| Searchable | Full-text search across all spaces |
+| Collaborative | Real-time edits and comments |
+| Exportable | Generate PDFs or static sites |
+
+<Callout kind="tip">
+  Start small: Create one space per major project to build familiarity.
+</Callout>
+
+## Getting Started
+
+Follow these steps to set up your first space.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+    Sign up at `https://app.haitran-docs.com` with your email.
+  </Step>
+  <Step title="New Space" icon="plus">
+    Click "New Space" and name it for your project, like "API Docs".
+  </Step>
+  <Step title="Add Pages" icon="file-text">
+    Create `introduction.mdx` and use the MDX editor.
+  </Step>
+  <Step title="Publish" icon="globe">
+    Hit publish to share your live docs.
+  </Step>
+</Steps>
+
+## Brand Color Guidelines
+
+Incorporate the brand color `#3B82F6` consistently. Apply it to headings, buttons, and accents for a unified look.
+
+<Tabs>
+  <Tab title="CSS" icon="css3">
+    Define the primary color in your styles.
+
+````css
+:root {
+  --brand-primary: #3B82F6;
+}
+
+.button {
+  background-color: var(--brand-primary);
+  color: white;
+}
+````
+  </Tab>
+  <Tab title="Tailwind" icon="tailwind">
+    Use the custom color in Tailwind config.
+
+````javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#3B82F6',
+      },
+    },
+  },
+};
+````
+
+    Then: `<div className="bg-primary text-white">Button</div>`
+  </Tab>
+  <Tab title="JS Usage" icon="javascript">
+    Dynamically apply the color.
+
+````javascript
+const brandColor = '#3B82F6';
+
+document.documentElement.style.setProperty('--brand-color', brandColor);
+````
+  </Tab>
+</Tabs>
+
+<Expandable title="Advanced Branding" default-open="false">
+  Customize further with CSS variables. Override defaults in your theme file:
+
+  ```css
+  :root {
+    --brand-primary: #3B82F6;
+    --brand-secondary: #1D4ED8;
+  }
+  ```
+
+  Test responsiveness: Ensure colors pass WCAG AA contrast ratios.
+</Expandable>
+
+<Callout kind="success">
+  Your docs now match the `#3B82F6` brand—share the link with your team!
+</Callout>

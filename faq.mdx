@@ -1,0 +1,137 @@
+---
+title: Frequently Asked Questions
+description: Answers to common queries about using Hai Tran Documentation, helping you resolve issues and optimize your workflow.
+---
+
+## Overview
+
+Hai Tran Documentation provides a flexible space to organize your project docs. You encounter common questions about accounts, content management, and errors. This page addresses those topics with actionable solutions.
+
+<Columns cols={2}>
+  <Card title="Account & Billing" icon="user" href="#account-billing">
+    Manage subscriptions and access.
+  </Card>
+  <Card title="Content Tips" icon="edit-3" href="#content-tips">
+    Best practices for your docs.
+  </Card>
+  <Card title="Troubleshooting" icon="alert-triangle" href="#troubleshooting">
+    Fix common issues quickly.
+  </Card>
+</Columns>
+
+<ExpandableGroup>
+
+  <Expandable id="account-billing" title="How do I manage my account and billing?" default-open="true">
+
+    Access your account settings from the dashboard. Update payment methods or view invoices there.
+
+    <Tabs>
+      <Tab title="Upgrade Plan" icon="arrow-up">
+        Choose from these tiers:
+
+        | Plan     | Price      | Features                  |
+        |----------|------------|---------------------------|
+        | Free     | $0/mo     | Basic editing, 1 project |
+        | Pro      | $19/mo    | Unlimited projects, API  |
+        | Team     | $49/mo    | Collaboration, analytics |
+
+        <Callout kind="tip">
+          Cancel anytime without penalties.
+        </Callout>
+      </Tab>
+      <Tab title="API Billing" icon="code">
+        Track usage with this endpoint:
+
+        <CodeGroup tabs="JavaScript,cURL">
+          ```javascript
+          const response = await fetch('https://api.haitran.dev/v1/billing/usage', {
+            headers: { Authorization: `Bearer ${YOUR_API_KEY}` }
+          });
+          const data = await response.json();
+          console.log(data.usage);
+          ```
+          ```bash
+          curl -H "Authorization: Bearer YOUR_API_KEY" \
+               https://api.haitran.dev/v1/billing/usage
+          ```
+        </CodeGroup>
+      </Tab>
+    </Tabs>
+
+  </Expandable>
+
+  <Expandable id="content-tips" title="What are the best practices for content management?">
+
+    Organize docs with clear hierarchies. Use frontmatter for metadata and components for rich layouts.
+
+    <Steps>
+      <Step title="Structure Pages" icon="file-text">
+        Start every page with YAML frontmatter:
+
+        ````markdown
+        ---
+        title: Your Page
+        description: Brief summary
+        ---
+        ````
+
+        Follow with H2 headings.
+      </Step>
+      <Step title="Use Components" icon="layers">
+        Incorporate `<Callout>`, `<Steps>`, and `<Tabs>` for engagement.
+      </Step>
+      <Step title="Version Control" icon="git-branch">
+        Connect to GitHub for seamless updates.
+      </Step>
+    </Steps>
+
+    <Callout kind="success">
+      Preview changes live to catch issues early.
+    </Callout>
+
+  </Expandable>
+
+  <Expandable id="troubleshooting" title="How do I troubleshoot common errors?">
+
+    Follow this process for most issues.
+
+    ```mermaid
+    graph TD
+        A[Identify Error] --> B[Check Logs]
+        B --> C{API Related?}
+        C -- Yes --> D[Verify `YOUR_API_KEY`]
+        C -- No --> E[Clear Cache]
+        D --> F[Retry Request]
+        E --> F
+        F --> G[Resolved?]
+        G -- No --> H[Contact Support]
+    ```
+
+    <Steps>
+      <Step title="Parsing Errors" icon="bug">
+        Ensure you escape special characters like `{variable}` and `<Component>` with backticks in prose.
+      </Step>
+      <Step title="Build Failures" icon="terminal">
+        Run locally first:
+
+        <CodeGroup tabs="npm,pnpm">
+          ```bash
+          npm run build
+          ```
+          ```bash
+          pnpm build
+          ```
+        </CodeGroup>
+      </Step>
+      <Step title="Component Issues" icon="alert-circle">
+        Verify PascalCase and double quotes: `<Callout kind="info">Text</Callout>`.
+      </Step>
+    </Steps>
+
+  </Expandable>
+
+</ExpandableGroup>
+
+## Next Steps
+
+Review these answers to streamline your workflow. For advanced support, check the <Card title="Support Portal" icon="help-circle" href="/support" horizontal>Submit a ticket</Card>.

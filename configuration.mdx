@@ -1,0 +1,127 @@
+---
+title: Configuring Your Doc Space
+description: Customize your documentation environment with options for branding, permissions, and integrations to suit your projects.
+---
+
+## Overview
+
+Tailor your Hai Tran Documentation space to match your project's identity and workflow. You configure branding with custom colors and themes, manage user access through granular permissions, and handle data portability via export and import features. These settings ensure your docs align with your brand while maintaining security and flexibility.
+
+<Callout kind="tip">
+  Start with branding changes as they provide immediate visual impact. Test permissions in a staging space before applying to production.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Brand Colors" icon="palette" href="#applying-brand-colors-and-themes">
+    Apply your hex color like `#3B82F6` for instant recognition.
+  </Card>
+  <Card title="User Permissions" icon="users" href="#setting-user-permissions">
+    Control read, write, and admin access precisely.
+  </Card>
+  <Card title="Export/Import" icon="upload" href="#export-and-import-options">
+    Migrate content seamlessly between spaces.
+  </Card>
+</Columns>
+
+## Applying Brand Colors and Themes
+
+Update your documentation's appearance to reflect your brand. Set primary colors, logos, and fonts directly in the settings panel.
+
+<Steps>
+  <Step title="Access Settings" icon="settings">
+    Navigate to Space Settings > Branding.
+  </Step>
+  <Step title="Enter Brand Color" icon="palette">
+    Input your hex code, such as `#3B82F6` for primary blue.
+  </Step>
+  <Step title="Preview and Save" icon="eye">
+    Preview changes live, then click Save to apply across all pages.
+  </Step>
+</Steps>
+
+Customize further with a theme configuration file. Use this in your space's `config.json`.
+
+<CodeGroup tabs="JSON,YAML">
+  ```json
+  {
+    "theme": {
+      "primaryColor": "#3B82F6",
+      "logoUrl": "https://your-domain.com/logo.svg",
+      "fontFamily": "Inter, sans-serif"
+    }
+  }
+  ```
+  ```yaml
+  theme:
+    primaryColor: "#3B82F6"
+    logoUrl: "https://your-domain.com/logo.svg"
+    fontFamily: "Inter, sans-serif"
+  ```
+</CodeGroup>
+
+## Setting User Permissions
+
+Define who can view, edit, or administer your docs. Permissions apply at the space or page level.
+
+| Role       | Read | Write | Delete | Admin |
+|------------|------|-------|--------|-------|
+| Viewer     | ✅   | ❌    | ❌     | ❌    |
+| Editor     | ✅   | ✅    | ❌     | ❌    |
+| Maintainer | ✅   | ✅    | ✅     | ❌    |
+| Admin      | ✅   | ✅    | ✅     | ✅    |
+
+<Tabs>
+  <Tab title="Invite Users" icon="user-plus">
+    Go to Members > Invite. Enter emails and select roles like `Editor`.
+  </Tab>
+  <Tab title="Page-Level Permissions" icon="lock">
+    Edit page > Permissions tab. Set `Viewer`-only for sensitive content.
+  </Tab>
+  <Tab title="CLI Permissions" icon="terminal">
+    ```bash
+    htdoc permissions set --space=my-space --user=user@example.com --role=editor
+    ```
+  </Tab>
+</Tabs>
+
+<Callout kind="alert">
+  Regularly review permissions to prevent unauthorized access.
+</Callout>
+
+## Export and Import Options
+
+Transfer your documentation between spaces or platforms effortlessly.
+
+<Expandable title="Export Formats" default-open="true">
+  Export as Markdown, PDF, or ZIP. Select pages or the entire space.
+
+  ```bash
+  htdoc export --space=my-space --format=md --output=./docs/
+  ```
+</Expandable>
+
+<Expandable title="Import Process">
+  1. Prepare your files in a ZIP with `metadata.json`.
+  2. Run: `htdoc import --space=target-space --file=docs.zip`.
+  
+  Sample `metadata.json`:
+  ```json
+  {
+    "pages": [
+      {"path": "guide.mdx", "title": "User Guide"}
+    ]
+  }
+  ```
+</Expandable>
+
+<Steps>
+  <Step title="Verify Export" icon="check-circle">
+    Download and inspect the archive for completeness.
+  </Step>
+  <Step title="Import to New Space" icon="upload">
+    Target an empty space to avoid conflicts.
+  </Step>
+  <Step title="Post-Import Review" icon="edit">
+    Check links and images; regenerate search index.
+  </Step>
+</Steps>

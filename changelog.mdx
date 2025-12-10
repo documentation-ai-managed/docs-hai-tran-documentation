@@ -1,0 +1,134 @@
+---
+title: Changelog
+description: Track the evolution of Hai Tran Documentation with details on releases, new features, and important updates.
+---
+
+## Recent Releases
+
+Stay updated with the latest enhancements in Hai Tran Documentation. Review release notes below to understand new features, improvements, and fixes. You access version details directly in your dashboard under the settings panel.
+
+<Callout kind="info">
+  Subscribe to notifications in your account settings to receive email alerts for major releases.
+</Callout>
+
+<Columns cols={3}>
+  <Card title="Upgrade Guide" icon="upload" href="/docs/upgrading">
+    Follow steps to update your documentation site seamlessly.
+  </Card>
+  <Card title="Contributing" icon="github" href="https://github.com/haitran/docs" target="_blank">
+    Help shape the future by submitting pull requests.
+  </Card>
+  <Card title="Roadmap" icon="map" href="/docs/roadmap">
+    Preview upcoming features and vote on priorities.
+  </Card>
+</Columns>
+
+## Upgrade Process
+
+Upgrade to the latest version using these steps. Always back up your configuration before proceeding.
+
+<Steps>
+  <Step title="Backup Config" icon="database">
+    Export your site settings from the dashboard.
+  </Step>
+  <Step title="Install Update" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="package">
+        ```bash
+        npm install @haitran/docs@latest
+        ```
+      </Tab>
+      <Tab title="yarn" icon="package">
+        ```bash
+        yarn add @haitran/docs@latest
+        ```
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Deploy" icon="rocket">
+    Run `npm run deploy` and verify changes.
+  </Step>
+</Steps>
+
+<Update label="2024-10-15" description="v2.1.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added `<Video>` component support for embedded media with poster images and controls.
+- Introduced `<Iframe>` for seamless third-party embeds like forms and demos.
+- Enhanced `<ParamField>` with `deprecated` attribute for better API docs.
+
+## Improvements
+
+- Optimized Mermaid diagram rendering for faster load times.
+- Improved accessibility with ARIA labels on all interactive components.
+
+## Bug Fixes
+
+- Fixed parsing errors in nested code blocks using 4 backticks.
+- Resolved heading hierarchy issues in auto-generated outlines.
+
+</Update>
+
+<Update label="2024-09-25" description="v2.0.0" tags={["breaking", "feature"]}>
+
+## Breaking Changes
+
+- Removed legacy `<Mermaid>` component syntax; use code blocks only.
+- Updated attribute requirements: all strings now require double quotes.
+
+## New Features
+
+- Launched `<Update>` component for structured changelogs.
+- Added `<Columns>` with up to 5 columns for flexible layouts.
+
+## Bug Fixes
+
+- Corrected special character escaping for `{`, `}`, `<`, `>` in prose.
+- Fixed self-closing tags for container components like `<Steps>`.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature"]}>
+
+## Initial Release
+
+- Core MDX components: `<Callout>`, `<Card>`, `<Steps>`, `<Tabs>`.
+- Full support for YAML frontmatter, headings starting at H2.
+- Integrated Lucide icons and syntax highlighting.
+
+## Improvements
+
+- Built-in parsing validation for zero-error MDX output.
+- Responsive design with brand color `#3B82F6`.
+
+</Update>
+
+## Version History
+
+| Version | Date       | Type          | Key Changes                  |
+|---------|------------|---------------|------------------------------|
+| v2.1.0  | 2024-10-15 | Feature      | Video/Iframe components     |
+| v2.0.0  | 2024-09-25 | Breaking     | Syntax updates              |
+| v1.0.0  | 2024-08-10 | Initial      | Core components launched    |
+
+<ExpandableGroup>
+  <Expandable title="Older Versions" default-open="false">
+
+    Review v0.x releases for legacy migration notes.
+
+    <CodeGroup tabs="CLI,API">
+      ```bash
+      npx haitran-docs migrate --from v0.5.0
+      ```
+      ```javascript
+      await docsClient.migrate({ from: 'v0.5.0' });
+      ```
+    </CodeGroup>
+
+  </Expandable>
+</ExpandableGroup>
+
+<Callout kind="tip">
+  Check the [GitHub releases page](https://github.com/haitran/docs/releases) for full commit history and binaries.
+</Callout>
